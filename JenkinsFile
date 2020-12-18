@@ -40,14 +40,12 @@ pipeline {
         steps{
             echo "------------>Cleaning previous compilations<------------"
 			
-				dir("Ceiba-ADN"){
-					sh 'gradle gradle --b ./build.gradle clean'
+				sh 'gradle gradle --b ./build.gradle clean'
 					
-					echo "------------>Unit Test<------------"
+				echo "------------>Unit Test<------------"
 					
-					sh 'gradle --b ./build.gradle test'
+				sh 'gradle --b ./build.gradle test'
 										
-				} 
         }
     }
 	
@@ -65,10 +63,10 @@ pipeline {
     stage('Build') {
         steps {
             echo "------------>Build<------------"
-            dir("Ceiba-ADN"){
-                        //Construir sin tarea test que se ejecutó previamente
-                        sh 'gradle --b ./build.gradle build -x test'
-            }
+            
+           //Construir sin tarea test que se ejecutó previamente
+           sh 'gradle --b ./build.gradle build -x test'
+            
         }
     }
 
