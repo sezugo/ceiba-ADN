@@ -44,16 +44,16 @@ pipeline {
     stage('Static Code Analysis') {
       steps{
         echo '------------>Análisis de código estático<------------'
-        //withSonarQubeEnv('Sonar') {
-		//sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner"
-        //}
+        withSonarQubeEnv('Sonar') {
+		sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner"
+        }
       }
     }
 
     stage('Build') {
       steps {
         echo "------------>Build<------------"
-		//sh 'gradle --b ./build.gradle build -x test'
+		sh 'gradle --b ./build.gradle build -x test'
       }
     }  
   }
