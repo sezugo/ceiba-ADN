@@ -32,11 +32,11 @@ pipeline {
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>Unit Tests<------------"
-		sh 'gradle gradle --b ./build.gradle clean'
+		//sh 'gradle gradle --b ./build.gradle clean'
 					
 		echo "------------>Unit Test<------------"
 					
-		sh 'gradle --b ./build.gradle test'
+		sh 'gradle --b ./build.gradle -x test'
 		
       }
     }
